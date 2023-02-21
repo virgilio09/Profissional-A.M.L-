@@ -1,0 +1,43 @@
+{% extends 'layouts/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}add-servico{% endblock %}
+
+{% block content %}
+<div class="add-servico d-flex justify-content-center">
+    <div class="card card-servico rounded shadow">
+        <div class="row">
+            <div class="col">
+                <div class="custom-title">
+                    <h2>Adicione um seviço</h2>
+                    <span class="section-separator"></span>
+                </div>
+                <div class="campo-req">
+                    <p>Campos marcados com (<span>*</span>) são obrigatórios.</p>
+                </div>
+            </div>
+        </div>
+
+        <form id="form-servicos" method="POST" enctype="multipart/form-data">
+            <div class="row">
+                {%  csrf_token %}
+                <div class="col-md-6">
+                    <span><i class="help-status fas fa-question-circle"></i></span>
+                    {{ servicoForm|crispy }}
+                    {{ imageForm|crispy }}
+                </div>
+                <div class="col-md-6">
+                    <p><a target="_blank" href="https://buscacepinter.correios.com.br/app/endereco/index.php">Não sei o meu CEP.</a></p>
+                    {{ endForm|crispy}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="submit" name="" id="" class="btn float-right mt-2">Adicionar<i class="plus fas fa-plus-circle"></i></button>
+                </div>
+            </div>         
+        </form>
+    </div>
+</div>
+{% endblock %}

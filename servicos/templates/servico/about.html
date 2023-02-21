@@ -1,0 +1,55 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Sobre{% endblock %}
+
+{% block content %}
+
+<div class="about">
+    <div class="row">
+        <div class="col">
+            <div class="custom-title text-center">
+                <h2>Profissional A.M.L (Autônomo, Microempreendedor, Liberal)</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="desc">
+                <p>Tem como objetivo principal facilitar a divulgação dos serviços oferecidos por profissionais com intuito de aumentar o alcance  dos serviços prestados.
+                    Os usuários poderão oferecer serviços e/ou divulgá-los. Eles serão categorizados como profissionais autônomos, microempreendedores e liberais.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="custom-title text-center">
+                <span><i class="fas fa-star"></i></span>
+                <h2>Motivação</h2>
+            </div>
+            <div class="desc">
+                <p>O A.M.L. objetiva ser simples e com interface "limpa", ou seja, com ele será possível aplicar alguns filtros para facilitar o rastreamento dos serviços. </p>
+            </div>
+        </div>
+    </div>
+   
+    <div class="row">
+        <div class="four col-sm-12 col-md-4">
+            <div class="counter-box colored">  <i class="fas fa-users"></i> <span class="counter">{{qtd_user}}</span>
+                <p>Para todos os tipos profissionais..</p>
+            </div>
+        </div>
+        <div class="four col-sm-12 col-md-4">
+            <div class="counter-box"> <i class="fas fa-cogs"></i> <span class="counter">{{qtd_servicos}}</span>
+                <p>Você poderá oferecer seus serviços</p>
+            </div>
+        </div>
+        <div class="four col-sm-12 col-md-4">
+            <div class="counter-box"> <a href="{% url 'add-servico' %}"><i class="fas fa-plus-circle"></i> <span class="counter">{{qtd_servicos}}</span></a>
+                <p>Adicione vários tipos de servicos de forma fácil.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

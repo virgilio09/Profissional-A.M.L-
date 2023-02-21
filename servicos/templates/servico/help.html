@@ -1,0 +1,77 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Ajuda{% endblock %}
+
+{% block content %}
+<div class="content-help">
+    <div class="row">
+        <div class="col">
+            <div class="custom-title">
+                <h2>Ajuda</h2>
+                <span class="section-separator"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-4 search-div">
+            <div class="form-group mb-3">
+                <form method="GET" id="search-form">
+                    <input class="form-control" type="text" id="search_help" name="search_help" placeholder="Buscar...">
+                    <i class="fas fa-search" id="search-btn"></i>
+                </form>
+            </div> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {% if request.GET.search_help %}
+                {% if achou %}
+                    <h3>Resultados da busca por: {{request.GET.search_help}}</h3>
+                {% else %}
+                    <h3>Resultados da busca por: {{request.GET.search_help}}</h3>
+                    <p>Nada encontrado, para listar todas as dúvidade clique <a href="{% url 'help' %}">aqui</a></p>
+                {% endif %}
+             {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col accordion_one mt-3">
+            <div class="panel-group" id="accordion_oneRight">
+                {% for help in helps %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#accordion_oneRight" href="#collapse{{help.id}}" aria-expanded="false"> {{help.titulo}} </a> </h4>
+                    </div>
+                    <div id="collapse{{help.id}}" class="panel-collapse collapse" aria-expanded="false" role="tablist">
+                        <div class="panel-body">
+                            <div class="text-accordion">
+                                <p> {{help.text}} </p>
+                            </div>
+                        </div> <!-- end of panel-body -->
+                    </div>   
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="pagination">
+            <span class="step-links">
+                {% if helps.has_previous %}
+                    <a href="?page={{ sevicos.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
+                {% endif %}
+                
+                {% if helps.paginator.num_pages %}
+                <span class="current">
+                    {{ helps.number }} de {{ helps.paginator.num_pages }}
+                </span>
+                {% endif %}
+            
+                {% if helps.has_next %}
+                    <a href="?page={{ helps.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+</div>
+{% endblock %}

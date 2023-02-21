@@ -1,0 +1,223 @@
+
+/* Media queries */
+/* xs < 768 */
+@media (max-width: 575.98px) { 
+    /* ------------ tipografia ---------- */
+    h1{
+        font-size: 30px;
+    }
+    h2{
+        font-size: 25px;
+    }
+    
+    h3 {
+        font-size: 20px;
+    }
+
+    h4{
+        font-size: 18px;
+    }
+
+    /*---------------- navbar ------------ */
+    #logo {
+        margin-left: 10px;
+    }
+
+    #logo img{
+        max-width: 180px;    
+    }
+
+    .btn-navbar{
+        width: 120px;
+        margin-left: 10px;
+    }
+    .nav-item {
+        margin-left: 10px;
+    }
+    /* ---------------Demo-home------------ */
+    #demo {
+        padding-top: 10em;
+    }
+    
+    /* ----------- add-servico ------------ */
+	.add-servico {
+        margin-top: 50px;
+        padding: 0px;
+    }
+    
+    .add-servico .card-servico {
+        padding: 15px 10px 15px 10px;
+    }
+
+    /* --------- Register ------------*/
+
+    .content-register {
+        margin-top: 50px;
+        padding: 0px;
+    }
+    
+    .card-register {
+        padding: 15px 10px 15px 10px;
+    }
+    /* -------- dashboard -------------*/
+    .dashboard {
+        margin-top: 50px;
+        padding: 0px;
+    }
+    .dashboard table a{
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    
+    /* ----------- add-servico ------------ */
+	.add-servico {
+        margin-top: 50px;
+        padding: 0px;
+    }
+    
+    .add-servico .card-servico {
+        padding: 15px 10px 15px 10px;
+    }
+
+     /* --------- Register ------------*/
+
+     .content-register {
+        margin-top: 50px;
+        padding: 0px;
+    }
+    .card-register {
+        padding: 15px 10px 15px 10px;
+    }
+    /* -------------- about----------- */
+
+    .about {
+        margin-top: 55px;
+        padding: 20px 10px 15px 10px;
+    }
+    
+    .about .desc {
+        margin-bottom: 15px;
+        padding: 10px;
+        /* padding: 10px 10px 10px 100px; */
+    }
+
+
+    /* -------------- home servico ----------*/
+
+    #servicos {
+        margin-top: 10px;
+        padding: 10px
+    }
+
+    .home-info{
+        padding: 15px 0px 15px 0px;
+    }
+
+    /* ----------- view-serviço ------------ */
+    .content-view {
+        margin-top: 55px;
+        padding: 10px;
+    }
+
+    .content-detalhe {
+        margin-top: 60px;
+    }
+    
+    .content-descricao {
+        margin-top: 10px;
+    }
+    
+
+}
+
+@media (min-width: 768px) and (max-width: 991.98px){
+     /* ------------ tipografia ---------- */
+    h1{
+        font-size: 40px;
+    }
+    h2{
+        font-size: 35px;
+    }
+    
+    h3 {
+        font-size: 25px;
+    }
+    h4 {
+        font-size: 20px;
+    }
+    /*---------------- navbar ------------ */
+    #logo {
+        margin-left: 20px;
+    }
+
+    #logo img{
+        max-width: 200px;    
+    }
+
+    .btn-navbar{
+        width: 120px;
+        margin-left: 10px;
+    }
+    .nav-item {
+        margin-left: 20px;
+    }
+    /* ---------------Demo-home------------ */
+  
+    #demo {
+        padding-top: 8em;
+        height: 90%;
+    }
+    
+    /* ----------- add-servico ------------ */
+	.add-servico {
+        margin-top: 50px;
+        padding: 0px;
+    }
+    
+    .add-servico .card-servico {
+        padding: 15px 10px 15px 10px;
+    }
+
+    /* ----------- view-serviço ------------ */
+    .content-view {
+        margin-top: 60px;
+        padding: 15px;
+    }
+
+    .content-detalhe {
+        margin-top: 70px;
+    }
+    
+    .content-descricao {
+        margin-top: 10px;
+    }
+}
+
+/* md */
+@media (min-width: 992px) and (max-width: 1199.98px)  {
+    h1{
+        font-size: 50px;
+    }
+    h2{ 
+        font-size: 34px;
+    }
+    h4{
+        font-size: 20px;
+    }   
+ 
+}
+@media (min-width: 1200px) {  
+    h1{
+        font-size: 50px;
+    }
+    h2{ 
+        font-size: 34px;
+    }   
+    h4{
+        font-size: 20px;
+    }   
+ 
+ 
+}
+

@@ -1,0 +1,36 @@
+{% extends 'layouts/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Registre-se{% endblock %}
+
+{% block content %}
+<div class="content-register d-flex justify-content-center">
+    <div class="card card-register rounded shadow">
+        <div class="row">
+            <div class="col">
+                <div class="custom-title">
+                    <h2>Registre-se</h2>
+                    <span class="section-separator"></span>
+                </div>
+                <div class="campo-req">
+                    <p>Campos marcados com (<span>*</span>) são obrigatórios.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next }}">
+
+                    {{ form|crispy }}
+
+                    <button type="submit" class="btn btn-block mt-3">Registrar</button>
+                </form>
+                <p class="change-form-p">Já possui uma conta? <a href="/accounts/login">Clique aqui!</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

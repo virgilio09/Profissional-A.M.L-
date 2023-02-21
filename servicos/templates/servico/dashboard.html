@@ -1,0 +1,174 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+
+{% block content %}
+<div class="dashboard">
+    <div class="row">
+        <div class="col">
+            <div class="custom-title">
+                <h2>Meus serviços</h2>
+                <span class="section-separator"></span>
+            </div>
+            <div class="hello">
+                <h3>Olá, seja bem vindo(a)</h3>
+            </div>
+        </div>
+    </div>
+    {% if exite %}
+        <div class="content-head">
+            <div class="row">
+                <div class="col-sm-12 col-lg-2">
+                    <a class="btn btn-block" href="{% url 'add-servico' %}" >Adicionar serviço<i class="plus fas fa-plus-circle"></i></a>
+                </div>
+                <div class="col-sm-12 col-lg-10 search-div">
+                    <form method="GET" id="search-form">
+                        <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome da servço para buscar...">
+                        <i class="fas fa-search" id="search-btn"></i>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-2">
+                    <div class="filter">
+                        <span><i class="fas fa-sort-amount-down"></i>Filtrar por:</span>
+                        <select name="filter" id="filter" class="form-control">
+                            <option value="">Opção</option>
+                            <option active value="todos">Todos</option>
+                            <option value="ativo">Ativos</option>
+                            <option value="desativado">Desativados</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if messages %}
+            <div class="row">
+                <div class="col">
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
+        {% if request.GET.search %}
+            {% if achou %}
+                <div class="row">
+                    <div class="col">
+                        <div class="info-dasboard">
+                            <h3>Resultado da busca por: {{request.GET.search}}</h3>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="info-dasboard">
+                            <h3>Resultado da busca por: {{request.GET.search}}</h3>
+                            <p>Nada encontrado... para voltar clique <a href="{% url 'dashboard' %}">aqui</a></p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+        {% if request.GET.filter and request.GET.filter != 'todos' %}
+            {% if status %}
+                <div class="row">
+                    <div class="col">
+                        <div class="info-dasboard">
+                            <h3>Serviços {{request.GET.filter}}s</h3>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="info-dasboard">
+                            <h3>Não exitem serviços {{request.GET.filter}}s</h3>
+                            <p>Para voltar a lista clique <a href="{% url 'dashboard' %}">aqui</a></p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+
+        {% if servicos %}
+            <div class="row">
+                <div class="table-responsive col-12">
+                    <table class="table mt-4">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Publicado</th>
+                                <th scope="col">Editar</th>
+                                <th scope="col">Remover</th>
+                                <th scope="col">Status<i class="help-status fas fa-question-circle"></i></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for servico in servicos %}
+                                <tr>
+                                    <th scope="row">{{forloop.counter}}</th>
+                                    <td ><a href="{% url 'servico-view' servico.id %}">{{servico.nome}}</a></td>
+                                    <td>{{servico.created_at|date:"d/M/Y"}}</td>
+                                    <td><a href="{% url 'edit-servico' servico.id %}"><i class="fas fa-edit"></i></a></td>
+                                    <td><a href="{% url 'rm-servico' servico.id %}" class="rm-servico"><i class="fas fa-trash-alt"></i></a></td>
+                                    {% if servico.status == 'ativo' %}
+                                        <td><i class="fa fa-check"></i></td>
+                                    {% else %}
+                                        <td><i class="fas fa-times"></i></td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if servicos.has_previous %}
+                            <a href="?page={{ sevicos.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
+                        {% endif %}
+                        
+                        {% if servicos.paginator.num_pages %}
+                        <span class="current">
+                            {{ servicos.number }} de {{ servicos.paginator.num_pages }}
+                        </span>
+                        {% endif %}
+                    
+                        {% if servicos.has_next %}
+                            <a href="?page={{ servicos.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="row">
+            <div class="col">
+                <div class="info-dasboard">
+                    <h3>Você ainda não possui nenhum serviço</h3>
+                    <p>Para adicionar um serviço clique <a href="{% url 'add-servico' %}">aqui</a></p>
+                </div>
+            </div>
+        </div>
+        {% if messages %}
+            <div class="row">
+                <div class="col">
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}
