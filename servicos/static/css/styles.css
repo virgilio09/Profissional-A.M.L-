@@ -111,6 +111,9 @@
     background: #4db7fe;
    
 }
+.card-text{
+    line-height: 0.9;
+}
 /* ------------------------- navbar ---------------------- */
 
 .navbar {
@@ -167,6 +170,11 @@
 }
 
 /* ---------------------------- Home demo -------------------*/
+.main-body {
+    margin-top: 50px;
+    padding: 40px;
+}
+
 
 /* #demo {
     width: 100%;
