@@ -39,6 +39,7 @@
 							</div> <!-- card-body.// -->
 						</div>
 					</article> <!-- filter-group  .// -->
+					<form action="" method="GET">
 					<article class="filter-group">
 						<header class="card-header">
 							<a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true" class="">
@@ -47,29 +48,70 @@
 							</a>
 						</header>
 						<div class="filter-content collapse show" id="collapse_2" style="">
-							<form action="" method="get">
 							<div class="card-body">
-								<label class="custom-control custom-checkbox">
-									<input type="checkbox" checked="" class="custom-control-input" id="todos" >
-									<div class="custom-control-label"> Todas
-										<b class="badge badge-pill badge-light float-right">120</b> 
-									</div>
-								</label>
 								{% for categoria in categorias %}
-									<label class="custom-control custom-checkbox">
-										<input type="checkbox" value="{{categoria.id}}" checked="" name='category' class="custom-control-input" id="{{categoria.id}}">
-										<div class="custom-control-label"> {{categoria.nome}}
-											<b class="badge badge-pill badge-light float-right">15</b> 
-										</div>
-									</label>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" value="{{categoria.id}}" name="category" id="{{categoria.id}}" name='category'>
+										<label class="form-check-label" for="{{categoria.id}}">
+											{{categoria.nome}}
+										</label>
+									</div>
 								{% endfor %}
-								<input type="submit" value="Enviar" class="btn btn-default"/>
-
 							</div> <!-- card-body.// -->
 
-							</form>
 						</div>
 					</article> <!-- filter-group .// -->
+
+					<article class="filter-group">
+						<header class="card-header">
+							<a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">
+							<i class="icon-control fa fa-chevron-down"></i>
+							<h6 class="title">Localidade</h6>
+							</a>
+						</header>
+						<div class="filter-content collapse show" id="collapse_1">
+							<div class="card-body">
+								<div class="mb-2">
+									<select id="estado" name="estado" class="form-control">
+										<option value="">Escolha o estado</option>
+										<option value="AC">Acre</option>
+										<option value="AL">Alagoas</option>
+										<option value="AP">Amapá</option>
+										<option value="AM">Amazonas</option>
+										<option value="BA">Bahia</option>
+										<option value="CE">Ceará</option>
+										<option value="DF">Distrito Federal</option>
+										<option value="ES">Espírito Santo</option>
+										<option value="GO">Goiás</option>
+										<option value="MA">Maranhão</option>
+										<option value="MT">Mato Grosso</option>
+										<option value="MS">Mato Grosso do Sul</option>
+										<option value="MG">Minas Gerais</option>
+										<option value="PA">Pará</option>
+										<option value="PB">Paraíba</option>
+										<option value="PR">Paraná</option>
+										<option value="PE">Pernambuco</option>
+										<option value="PI">Piauí</option>
+										<option value="RJ">Rio de Janeiro</option>
+										<option value="RN">Rio Grande do Norte</option>
+										<option value="RS">Rio Grande do Sul</option>
+										<option value="RO">Rondônia</option>
+										<option value="RR">Roraima</option>
+										<option value="SC">Santa Catarina</option>
+										<option value="SP">São Paulo</option>
+										<option value="SE">Sergipe</option>
+										<option value="TO">Tocantins</option>
+									</select>
+								</div>
+								<select id="cidade" name="cidade" class="form-control">
+									<option value="{{ request.GET.cidade }}">Cidade, escolha o estado</option>
+								</select>
+							</div> <!-- card-body.// -->
+						</div>
+					</article> <!-- filter-group  .// -->
+					<div class="p-3">
+						<input type="submit" value="Aplicar filtros" class="btn btn-block btn-default" />
+					</form>
 				</div> <!-- card.// -->
 			</aside> <!-- fim conteudo lateral -->
 			<main class="col-md-9">
