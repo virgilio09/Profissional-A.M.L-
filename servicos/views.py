@@ -29,36 +29,28 @@ def home(request):
             servicos_list = Servico.objects.select_related('endereco').filter(nome__icontains=nome, endereco__estado=estado, endereco__cidade=cidade, categoria=category, status='ativo')
             
             cat = Categoria.objects.filter(id=category).first()
-            messages.info(request, "Filtros aplicados -> Nome: {}; Estado: {}; Cidade: {}; Categiria: {}".format(nome, estado, cidade, cat))
-            messages.info(request, "Desça a página para vizualizar o resultado!!")
+           
 
         elif estado and cidade and category:
             servicos_list = Servico.objects.select_related('endereco').filter(endereco__estado=estado, endereco__cidade=cidade, categoria=category, status='ativo')
 
             cat = Categoria.objects.filter(id=category).first()
-            messages.info(request, "Filtros aplicados -> Estado: {}; Cidade: {}; Categiria: {}".format(estado, cidade, cat))
-            messages.info(request, "Desça a página para vizualizar o resultado!!")
+           
 
         elif estado and cidade:
             servicos_list = Servico.objects.select_related('endereco').filter(endereco__estado=estado, endereco__cidade=cidade, status='ativo')
-            messages.info(request, "Filtros aplicados -> Estado: {}; Cidade: {}".format(estado, cidade))
-            messages.info(request, "Desça a página para vizualizar o resultado!!")
-       
+           
         elif nome:
-            messages.info(request, "Filtros aplicados -> Nome: {}".format(nome))
-            messages.info(request, "Desça a página para vizualizar o resultado!!")
+            
             servicos_list = Servico.objects.filter(nome__icontains=nome, status='ativo')
         elif category:
             servicos_list = Servico.objects.select_related('endereco').filter(categoria=category, status='ativo')
             
             cat = Categoria.objects.filter(id=category).first()
-            messages.info(request, "Filtros aplicados -> Categoria: {}".format(cat))
-            messages.info(request, "Desça a página para vizualizar o resultado!!")
-
     else:
         existe = False
 
-    paginator = Paginator(servicos_list, 8)
+    paginator = Paginator(servicos_list, 6)
 
     page = request.GET.get('page')
     servicos = paginator.get_page(page)

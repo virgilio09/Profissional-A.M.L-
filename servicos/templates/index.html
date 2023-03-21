@@ -126,36 +126,35 @@
 						</div>
 					</header><!-- sect-heading -->
 				{% endif %}
-				{% for servico in servicos %}
-					<div class="row">
-						<div class="col-md-4">
-							<figure class="card card-product-grid">
-								<div class="img-wrap"> 
-									<span class="badge badge-danger"> Novo </span>
+
+				<div class="row">
+					{% for servico in servicos %}
+						<div class="col-sm-12 col-md-4 col-lg-4 mb-4">
+							<div class="card shadow">
+								<div class="capa">
 									{% if servico.capa %}
 										<img class="img-fluid" src="{{servico.capa.url}}" alt="{{servico.nome}}">
-										<a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i>Olhada rápida </a>
 									{% else %}
 										<img class="img-fluid"src="{% static 'images/layouts/image_not.png' %}" alt="image_not">
 									{% endif %}
-								</div> <!-- img-wrap.// -->
-								<figcaption class="info-wrap">
-									<div class="fix-height mb-2">
-										<h4 class="card-title">{{servico.nome}}</h4>
-										<p class="card-text">Categoria: {{servico.categoria}}</p>
-										<p class="card-text">Estado: {{servico.endereco.estado}}</p>
-										<p class="card-text">Ciadade: {{servico.endereco.cidade}}</p>
-									</div>
+								</div>
+								<div class="card-body custom_line">
+									<h5 class="card-title">{{servico.nome}}</h5>
+									<p class="card-text">Categoria: {{servico.categoria}}</p>
+									<p class="card-text">Estado: {{servico.endereco.estado}}</p>
+									<p class="card-text">Ciadade: {{servico.endereco.cidade}}</p>
 									<a href="{% url 'servico-view' servico.id %}" class="btn btn-block btn-default">Saiba mais</a>
-							</figcaption>
-						</figure>
-					</div> <!-- col. card serviços// -->
-				{% empty %}
-					<div class="col">
-						<h3>Nenhum serviço encontrado ):</h3>
-						<p>Para listar todos clique <a href="{% url 'home' %}">aqui</a></p>
-					</div>
-				{% endfor %}
+
+								</div>
+							</div>
+						</div>
+					{% empty %}
+						<div class="col">
+							<h3>Nenhum serviço encontrado ):</h3>
+							<p>Para listar todos clique <a href="{% url 'home' %}">aqui</a></p>
+						</div>
+					{% endfor %}
+			
 			</main>
 		</div>
 	{% else %}	<!--Nao existem serviçoes -->

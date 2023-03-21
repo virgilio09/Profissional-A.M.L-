@@ -111,8 +111,8 @@
     background: #4db7fe;
    
 }
-.card-text{
-    line-height: 0.9;
+.custom_line{
+    line-height: 0.5;
 }
 /* ------------------------- navbar ---------------------- */
 
